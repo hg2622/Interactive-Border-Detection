@@ -104,6 +104,7 @@ def custom_gap_fill_vertical(binary_image, kernel_height=10, kernel_width=5):
 
     return output
 
+'''
 # File path
 current_path = os.getcwd()
 image_path = os.path.join(current_path, 'test', 'IMG-3651.jpg')  # Replace with your path
@@ -149,3 +150,4 @@ cv2.imshow("Intersection Mask", intersection_mask)
 cv2.imshow("Hough Line Fit Result", hough_result_image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+'''

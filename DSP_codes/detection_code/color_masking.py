@@ -3,7 +3,7 @@ import os
 import numpy as np
 
 
-def detect_brown_mask(image_path, brown_range):
+def detect_brown_mask(input_image, brown_range):
     """
     Detects the brown color mask in an image.
 
@@ -14,12 +14,12 @@ def detect_brown_mask(image_path, brown_range):
     Returns:
         numpy.ndarray: Mask for the brown region.
     """
-    original_image = cv2.imread(image_path)
-    if original_image is None:
-        raise FileNotFoundError(f"Image not found at {image_path}")
+    #original_image = cv2.imread(image_path)
+    #if original_image is None:
+        #raise FileNotFoundError(f"Image not found at {image_path}")
 
     # Convert to HSV color space
-    hsv_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2HSV)
+    hsv_image = cv2.cvtColor(input_image, cv2.COLOR_BGR2HSV)
 
     # Create a mask for the brown region
     brown_mask = cv2.inRange(hsv_image, brown_range[0], brown_range[1])
@@ -39,10 +39,10 @@ brown_lower = (10, 50, 50)
 brown_upper = (30, 255, 255)
 
 # File path
-current_path = os.getcwd()
-image_path = os.path.join(current_path, 'test', 'IMG-3645.jpg')
-
-# Detect the brown mask
+#current_path = os.getcwd()
+#image_path = os.path.join(current_path, 'DSP_codes','photos', 'IMG-3645.jpg')
+'''
+#Detect the brown mask
 brown_mask = detect_brown_mask(
     image_path,
     brown_range=(brown_lower, brown_upper),
@@ -55,3 +55,4 @@ brown_scaled = scale_image(brown_mask, scale=0.2)
 cv2.imshow("Brown Mask", brown_scaled)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+'''

@@ -3,7 +3,7 @@ import os
 import numpy as np
 
 
-def detect_large_edges(image_path, sigma=1.0, gradient_threshold=100, kernel_size=9, display_scale=0.2, min_contour_length=20):
+def detect_large_edges(input_image, sigma=1.0, gradient_threshold=100, kernel_size=9, display_scale=0.2, min_contour_length=20):
     """
     Detect large edges in an image using the gradient method and filter noise using contour filtering.
 
@@ -19,10 +19,10 @@ def detect_large_edges(image_path, sigma=1.0, gradient_threshold=100, kernel_siz
         numpy.ndarray: Edge-detected image resized for display.
     """
     # Load the image in grayscale
-    original_image = cv2.imread(image_path)
-    if original_image is None:
-        raise FileNotFoundError(f"Image not found at {image_path}")
-    grayscale_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
+    #original_image = cv2.imread(image_path)
+    #if original_image is None:
+        #raise FileNotFoundError(f"Image not found at {image_path}")
+    grayscale_image = cv2.cvtColor(input_image, cv2.COLOR_BGR2GRAY)
 
     # Apply Gaussian Blur to reduce noise
     blurred = cv2.GaussianBlur(grayscale_image, (0, 0), sigma)
@@ -57,12 +57,12 @@ def detect_large_edges(image_path, sigma=1.0, gradient_threshold=100, kernel_siz
 
 # Paths to images
 current_path = os.getcwd()
-image_path = os.path.join(current_path, 'test', 'IMG-3644.jpg')
+image_path = os.path.join(current_path, 'DSP_codes','photos', 'IMG-3644.jpg')
 
 # Perform edge detection
-edges_resized = detect_large_edges(image_path, sigma=4, gradient_threshold=30, kernel_size=3, display_scale=0.2, min_contour_length=250)
+#edges_resized = detect_large_edges(image_path, sigma=4, gradient_threshold=30, kernel_size=3, display_scale=0.2, min_contour_length=250)
 
 # Display the edge-detected image
-cv2.imshow("Edge Detection with Contour Filtering", edges_resized)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+#cv2.imshow("Edge Detection with Contour Filtering", edges_resized)
+#cv2.waitKey(0)
+#cv2.destroyAllWindows()

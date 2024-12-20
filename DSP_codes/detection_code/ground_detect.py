@@ -105,7 +105,6 @@ def combine_and_display(image_path, brown_range, black_range, display_scale=0.2,
     original_image = cv2.imread(image_path)
     if original_image is None:
         raise FileNotFoundError(f"Image not found at {image_path}")
-
     # Detect large edges
     filtered_edges = detect_large_edges(image_path, sigma=4, gradient_threshold=30, kernel_size=3, min_contour_length=250)
 
@@ -138,7 +137,9 @@ def combine_and_display(image_path, brown_range, black_range, display_scale=0.2,
     ground_scaled = scale_image(ground_mask, display_scale)
     result_scaled = scale_image(result_image, display_scale)
     overlap_only_scaled = scale_image(overlap_only_image, display_scale)
+    return result_scaled
 
+'''
     # Display the images
     #cv2.imshow("Original Image", original_scaled)
     cv2.imshow("Hough Lines", hough_scaled)
@@ -147,8 +148,10 @@ def combine_and_display(image_path, brown_range, black_range, display_scale=0.2,
     cv2.imshow("Filtered Overlap Only", overlap_only_scaled)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+'''
 
 
+'''
 # Define color ranges for ground detection
 brown_lower = (10, 50, 50)
 brown_upper = (30, 255, 255)
@@ -161,3 +164,4 @@ image_path = os.path.join(current_path, 'test', 'IMG-3649.jpg')
 
 # Run the combined detection and display the result
 combine_and_display(image_path, brown_range=(brown_lower, brown_upper), black_range=(black_lower, black_upper), display_scale=0.2, min_area=500)
+'''
